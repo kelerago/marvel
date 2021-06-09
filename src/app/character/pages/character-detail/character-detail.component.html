@@ -1,21 +1,21 @@
 <div class="container character-detail mt-5" *ngIf="character">
     <div class="row">
-        <div class="col-8">
+        <div class="col-xs-12 col-md-8">
             <img 
                 [src]="character.thumbnail.path + imageType + character.thumbnail.extension"
                 class="img-fluid"
             >
         </div>
-        <div class="col-4">
+        <div class="col-xs-12 col-md-4">
             <div class="character-detail__information mt-5">
                 <h2> {{ character.name }} </h2>
-                <p class="character-detail__date"> Updated {{ character.modified }} </p>
+                <p class="character-detail__date"> Updated {{ characterUpdatedDate }} </p>
                 <p class="character-detail__description"> {{ character.description }} </p>
             </div>
         </div>
     </div>        
 
-    <div class="character-detail__comics mt-5">
+    <div class="character-detail__comics mt-5" *ngIf="comics.length > 0">
         <h2>COMICS</h2>
 
         <ngx-slick-carousel 
@@ -23,9 +23,44 @@
             #slickModal="slick-carousel" 
             [config]="slideConfig" 
         >
-          <div ngxSlickItem *ngFor="let comic of comics" class="slide">
+          <div 
+            ngxSlickItem 
+            *ngFor="let comic of comics" 
+            class="slide"
+            (click)="getComic(comic); comicModal.show()"
+          >
               <img [src]="comic.thumbnail.path + this.comicImageType + comic.thumbnail.extension" width="100%">
           </div>
         </ngx-slick-carousel>
     </div>
+</div>
+
+<div 
+    mdbModal 
+    #comicModal="mdbModal" 
+    class="modal fade" 
+    tabindex="-1" 
+    role="dialog" 
+    aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="comicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 col-lg-4">
+                <img [src]="comicDetail?.thumbnail?.path + comicDetailImageType + comicDetail?.thumbnail?.extension" alt="">
+            </div>
+            <div class="col-xs-12 col-md-6 col-lg-8">
+                <h2> {{ comicDetail?.title }} </h2>
+                <p>{{ comicDetail?.description }}</p>
+            </div>
+        </div>
+      </div>      
+    </div>
+  </div>
 </div>

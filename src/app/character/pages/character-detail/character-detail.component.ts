@@ -15,11 +15,18 @@ export class CharacterDetailComponent implements OnInit {
 
   public character!: Character;
   public comics: Comic[] = [];
+  public comicDetail!: Comic;
 
   readonly imageType= ImageAspect.landscape + ImageSize.incredible;
-  readonly comicImageType = ImageAspect.portrait + ImageSize.small; 
+  readonly comicImageType = ImageAspect.portrait + ImageSize.xlarge;
+  readonly comicDetailImageType = ImageAspect.portrait + ImageSize.incredible; 
 
   slideConfig = {"slidesToShow": 8, "slidesToScroll": 8};
+
+  get characterUpdatedDate(): string {
+
+    return new Date(this.character.modified).toDateString();
+  }
 
   constructor(
     private characterService: CharacterService,
@@ -42,6 +49,11 @@ export class CharacterDetailComponent implements OnInit {
         this.comics = response.data.results;          
       })
     });
+  }
+
+  getComic(comic: Comic) {
+
+    this.comicDetail = comic;
   }
 
 }

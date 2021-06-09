@@ -27,5 +27,12 @@
                 font-weight: 700;
             }
         }
-    }    
+    }  
+    
+    @media(max-width: 767px){
+
+        .character-detail__information{
+            margin-left: 0px !important;
+        }
+    }
 }
