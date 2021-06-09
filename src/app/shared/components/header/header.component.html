@@ -5,7 +5,10 @@
             <img class="img-fluid" src="assets/logo.svg" alt="">
         </div>
 
-        <div class="col-12 col-sm-5 col-md-4 col-lg-3 offset-sm-5 offset-md-4 offset-lg-7">
+        <div 
+            *ngIf="isAuthenticated"
+            class="col-12 col-sm-5 col-md-4 col-lg-5 offset-sm-5 offset-md-4 offset-lg-5"
+        >
             <div class="btn-group" dropdown>
                 <button 
                     dropdownToggle 
@@ -23,14 +26,17 @@
                 >
                   <li role="menuitem">
                       <a class="dropdown-item" routerLink="/"> Characters </a>
-                  </li>                  
+                  </li>   
                   <li role="menuitem">
+                    <a class="dropdown-item" (click)="logout()"> Logout </a>
+                  </li>                   
+                  <!-- <li role="menuitem">
                     <a class="dropdown-item" routerLink="favorites"> Favorite Characters </a>
-                  </li>                  
+                  </li>-->
                 </ul>
             </div>
             <span class="p-2 header__profile">
-                <span>Ian</span>
+                <span> {{ userData.displayName }} </span>
                 <img src="assets/user.png" alt="">
             </span>
         </div>
@@ -39,7 +45,10 @@
 
     </div>
 
-    <div class="row mt-2 header__search">
+    <div 
+        class="row mt-2 header__search" 
+        *ngIf="isAuthenticated"
+    >
         <div class="col-xs-12 col-md-8 offset-md-2">
             <form>
                 <div class="form-group">

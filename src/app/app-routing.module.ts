@@ -6,27 +6,37 @@ import { CharacterDetailComponent } from './character/pages/character-detail/cha
 import { FavoriteCharacterListComponent } from './character/pages/favorite-character-list/favorite-character-list.component';
 import { LoginComponent } from './auth/pages/login/login.component';
 import { NotFoundComponent } from './shared/pages/not-found/not-found.component';
+import { NoAuthGuard } from './shared/guards/no-auth.guard';
+import { AuthGuard } from './shared/guards/auth-guard.service';
 
-const routes: Routes = [
+const routes: Routes = [  
   {
-    path: '',
-    component: GeneralCharacterListComponent
-  },
-  {
-    path: 'favorites',
-    component: FavoriteCharacterListComponent
+    path: '',    
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        component: GeneralCharacterListComponent
+      },
+      {
+        path: 'favorites',
+        component: FavoriteCharacterListComponent
+      },      
+      {
+        path: 'character-detail/:id',
+        component: CharacterDetailComponent
+      }      
+    ]
   },
   {
     path: 'login',
-    component: LoginComponent
-  },
-  {
-    path: 'character-detail/:id',
-    component: CharacterDetailComponent
+    component: LoginComponent,
+    canActivate: [NoAuthGuard]
   },
   {
     path: '**',
-    component: NotFoundComponent
+    component: NotFoundComponent,
+    canActivate: [NoAuthGuard]
   }
 ];
 

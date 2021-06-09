@@ -12,6 +12,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ApplicationHttpClient, applicationHttpClientCreator } from './services/application-http-client';
 import { ApiKeyInterceptor } from './interceptors/api-key.interceptor';
 import { FormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/auth-guard.service';
+import { NoAuthGuard } from './guards/no-auth.guard';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
   ],
   providers: [
+    AuthGuard,
+    NoAuthGuard,
     {
       provide: ApplicationHttpClient,
       useFactory: applicationHttpClientCreator,
