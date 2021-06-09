@@ -1,0 +1,66 @@
+<div class="container mt-3 header">
+    <div class="row">
+
+        <div class="col-12 col-sm-2 col-md-2 col-lg-2">
+            <img class="img-fluid" src="assets/logo.svg" alt="">
+        </div>
+
+        <div class="col-12 col-sm-5 col-md-4 col-lg-3 offset-sm-5 offset-md-4 offset-lg-7">
+            <div class="btn-group" dropdown>
+                <button 
+                    dropdownToggle 
+                    type="button" 
+                    class="btn"
+                >
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul 
+                    *dropdownMenu 
+                    class="dropdown-menu"
+                    role="menu" 
+                    aria-labelledby="button-basic"
+                >
+                  <li role="menuitem">
+                      <a class="dropdown-item" routerLink="/"> Characters </a>
+                  </li>                  
+                  <li role="menuitem">
+                    <a class="dropdown-item" routerLink="favorites"> Favorite Characters </a>
+                  </li>                  
+                </ul>
+            </div>
+            <span class="p-2 header__profile">
+                <span>Ian</span>
+                <img src="assets/user.png" alt="">
+            </span>
+        </div>
+
+        
+
+    </div>
+
+    <div class="row mt-2 header__search">
+        <div class="col-xs-12 col-md-8 offset-md-2">
+            <form>
+                <div class="form-group">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                              <i class="fas fa-search"></i>
+                          </div>
+                        </div>
+                        <input 
+                            [(ngModel)]="term"
+                            (keyup.enter)="getSearch()"
+                            type="text" 
+                            name="term" 
+                            id="" 
+                            class="form-control"
+                            placeholder="SEARCH CHARACTERS"
+                        >
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

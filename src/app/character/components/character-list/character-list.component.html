@@ -1,0 +1,28 @@
+<div class="character-list container">
+    <div class="row">
+        <app-character 
+            class="col-xs-12 col-sm-4 col-lg-2 animate__animated animate__fadeIn animate__delay-500ms"
+            *ngFor="let character of characters"
+            [character]="character"
+            [routerLink]="['/character-detail', character.id]"
+        >
+        </app-character>
+    </div>
+
+    <nav class="character-list__pagination mt-3">
+        <ul class="pagination pg-blue">
+          <li class="page-item">
+            <a class="page-link" aria-label="Previous" mdbWavesEffect (click)="paginate(-1)">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>          
+          <li class="page-item">
+            <a class="page-link" aria-label="Next" mdbWavesEffect (click)="paginate(1)">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+    </nav>
+</div>

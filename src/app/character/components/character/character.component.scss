@@ -1,0 +1,32 @@
+@import "../../../shared/styles/colors.scss";
+
+:host(app-character){
+
+    .character{
+        cursor: pointer;
+        position: relative;
+        img{
+            height: 100%;
+            width: 100%;
+        }
+        p{
+        }
+        .character__footer{
+            align-items: center;
+            background: rgba($color: $third, $alpha: 0.6);
+            bottom: 0px;
+            display: flex;
+            height: 100px;
+            justify-content: center;
+            padding: 5px;
+            position: absolute;
+            width: 100%;
+            p{
+                color: $secondary;
+                font-weight: 700;
+                margin: 0;
+                // text-align: center;
+            }
+        }
+    }
+}

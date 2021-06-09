@@ -1,0 +1,33 @@
+@import "../../styles/colors.scss";
+
+:host(app-header){
+    .header{        
+        .header__profile{
+            background: $third;
+            border-radius: 10px;
+            img{
+                height: 20px;
+                margin-left: 10px;
+                width: 20px;
+            }
+        }
+        button{
+            box-shadow: none;
+            &:hover{
+                box-shadow: none;
+            }
+        }
+        .header__search{
+            .form-group{
+                .input-group-text{
+                    background-color: transparent;
+                    border-right: 0;
+                }
+                input{
+                    background: transparent;
+                    border-left: 0;
+                }
+            }
+        }
+    }
+}

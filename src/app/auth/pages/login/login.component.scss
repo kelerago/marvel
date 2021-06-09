@@ -1,0 +1,53 @@
+@import "../../../shared/styles/colors.scss";
+
+:host(app-login){
+    .login{
+        background-image: url(../../../../assets/login.png);
+        height: 100vh;
+        position: relative;
+        .login__form-container{
+            align-items: center;
+            background: $third;
+            border-radius: 20px;          
+            display: flex;  
+            flex-direction: column;
+            padding: 50px 5px 30px 5px;
+            position: absolute;
+            right: 50px;
+            top: 100px;
+            width: 400px;
+            h2{
+                color: $secondary;
+                font-size: 24px;
+                font-weight: 700;
+            }
+            .login__social_buttons{
+                box-shadow: 10px 10px 8px $fourth;
+                // padding: 6px 30px 6px 30px;
+                width: 100%;
+            }
+            hr{
+                border: 1px solid $fourth;
+                margin: 30px 0 30px 0;
+                width: 100%;
+            }
+            form{
+                button{
+                    background: $primary;
+                    border-radius: 20px;
+                    color: $third;
+                    font-weight: 700;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .login__form-container{
+        margin-top: 20px;
+        position: static !important;
+        width: 100% !important;
+    }
+}
